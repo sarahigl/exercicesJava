@@ -9,7 +9,7 @@ public class Main {
     private static double nbr1;
 
     public static void main(String[] args) {
-        Scanner scanner1 = new Scanner(System.in);
+        //Scanner scanner1 = new Scanner(System.in);
         //scannerCarre(scanner1);
         //scannerSomme(scanner1);
         //scannerAverage(scanner1);
@@ -17,8 +17,9 @@ public class Main {
         //scannerCalculator(scanner1);
 
 //        System.out.println(livre.getTitre());
-
-
+        //Card cardmenu = new Card(null);
+        //ListBooks list = new ListBooks(null);
+        Book bookForm = new Book(null);
     }
 
     public static void scannerCarre(Scanner scanner1){

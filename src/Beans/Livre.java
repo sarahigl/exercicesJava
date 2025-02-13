@@ -7,10 +7,10 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Livre {
-    public String titre;
-    public String description;
-    public String datePublication;
-    public ArrayList<String> genre;
+    private String titre;
+    private String description;
+    private String datePublication;
+    private ArrayList<String> genre;
     private static ArrayList<Livre> collection = new ArrayList<>();
 
     public String getTitre() {

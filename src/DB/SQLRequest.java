@@ -31,16 +31,21 @@ public class SQLRequest {
     public static Livre addBook(Livre livre) {
         //instancier un Objet null
         Livre livreAdd= null;
+        /*
+         try (PreparedStatement statement = dbConnection.prepareStatement(sql);
+             ResultSet resultSet = statement.executeQuery();){
+             EN AJOUTANT CE TYPE DE PARAM DANS LE TRY CA OPTIMISE LE STOCKAGE CAR AUTOMATIQUEMENT ILS SONT CLOSED A LA FIN
+         */
         try{
             //Connection à la BDD...
             Statement stmt = connexion.createStatement();
             //requête SQL
-            String sql = "INSERT INTO livre (titre, description, date_publication, genre) " + "VALUES (?, ?, ?, ?)";
+            String sql = "INSERT INTO livre (titre, description, date_publication, genre) " + "VALUES (?, ?, ?, ?)"; //autant de point d'interrogation que de données a enregistrer
             //Préparation de la requête
             PreparedStatement preparedStatement =
                     connexion.prepareStatement(sql);
             //Bind des paramètres
-            preparedStatement.setString(1, livre.getTitre());
+            preparedStatement.setString(1, livre.getTitre()); //le chiffre correspond à son emplacement dans le insert
             preparedStatement.setString(2, livre.getDescription());
             preparedStatement.setString(3, livre.getDatePublication());
             String genreString = "";
@@ -50,7 +55,7 @@ public class SQLRequest {
             preparedStatement.setString(4, genreString);
 
             //Exécution de la requête
-            int addedRows = preparedStatement.executeUpdate();
+            int addedRows = preparedStatement.executeUpdate(); //dans la plus part des cas on utilise executeUpdate sauf si on fais un SELECT => executeQuery
             //test si l'enregistrement est ok
             if (addedRows > 0) {
                 //Création d'un Objet User
